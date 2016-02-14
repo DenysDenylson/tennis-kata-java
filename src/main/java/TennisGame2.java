@@ -14,11 +14,17 @@ public class TennisGame2 implements TennisGame
         this.namePlayer2 = player2Name;
     }
 
+    public boolean isLove(int pointPlayer){
+        if (pointPlayer == 0)
+            return true;
+        return false;
+    }
+    
     public String getScore(){
         String score = "";
         if (pointPlayer1 == pointPlayer2 && pointPlayer1 < 4)
         {
-            if (pointPlayer1==0)
+            if (isLove(pointPlayer1))
                 score = "Love";
             if (pointPlayer1==1)
                 score = "Fifteen";
@@ -29,7 +35,7 @@ public class TennisGame2 implements TennisGame
         if (pointPlayer1==pointPlayer2 && pointPlayer1>=3)
             score = "Deuce";
         
-        if (pointPlayer1 > 0 && pointPlayer2==0)
+        if (pointPlayer1 > 0 && isLove(pointPlayer2))
         {
             if (pointPlayer1==1)
                 answerPlayer1 = "Fifteen";
@@ -41,7 +47,7 @@ public class TennisGame2 implements TennisGame
             answerPlayer2 = "Love";
             score = answerPlayer1 + "-" + answerPlayer2;
         }
-        if (pointPlayer2 > 0 && pointPlayer1==0)
+        if (pointPlayer2 > 0 && isLove(pointPlayer1))
         {
             if (pointPlayer2==1)
                 answerPlayer2 = "Fifteen";
