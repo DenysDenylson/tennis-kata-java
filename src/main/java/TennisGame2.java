@@ -13,8 +13,8 @@ public class TennisGame2 implements TennisGame
         this.namePlayer1 = player1Name;
         this.namePlayer2 = player2Name;
     }
-
-    public String getScore(){
+    
+    public String tiedNotAbove30(){
         String score = "";
         if (pointPlayer1 == pointPlayer2 && pointPlayer1 < 4){
             if (isLove(pointPlayer1))
@@ -25,6 +25,13 @@ public class TennisGame2 implements TennisGame
                 score = "Thirty";
             score += "-All";
         }
+        return score;
+    }
+
+    public String getScore(){
+        String score = "";
+        
+        score = tiedNotAbove30();
         
         if (isDeuce())
             score = "Deuce";
@@ -117,7 +124,7 @@ public class TennisGame2 implements TennisGame
     }
     
     public boolean isDeuce(){
-        if (pointPlayer1==pointPlayer2 && pointPlayer1>=3)
+        if (pointPlayer1 == pointPlayer2 && pointPlayer1 >=3)
             return true;
         return false;
     }
