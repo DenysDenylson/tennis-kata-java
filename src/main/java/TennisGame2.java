@@ -14,9 +14,9 @@ public class TennisGame2 implements TennisGame
         this.namePlayer2 = player2Name;
     }
     
-    public String tiedNotAbove30(){
+    public String tiedGame(){
         String score = "";
-        if (pointPlayer1 == pointPlayer2 && pointPlayer1 < 4){
+        if (pointPlayer1 == pointPlayer2){
             if (isLove(pointPlayer1))
                 score = "Love";
             if (isFifteen(pointPlayer1))
@@ -24,6 +24,8 @@ public class TennisGame2 implements TennisGame
             if (isThirty(pointPlayer1))
                 score = "Thirty";
             score += "-All";
+            if ( pointPlayer1>=3)
+                    score = "Deuce";
         }
         return score;
     }
@@ -31,10 +33,8 @@ public class TennisGame2 implements TennisGame
     public String getScore(){
         String score = "";
         
-        score = tiedNotAbove30();
+        score = tiedGame();
         
-        if (isDeuce())
-            score = "Deuce";
         
         if (pointPlayer1 > 0 && isLove(pointPlayer2)){
             if (isFifteen(pointPlayer1))
