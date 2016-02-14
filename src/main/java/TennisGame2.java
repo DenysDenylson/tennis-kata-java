@@ -22,7 +22,7 @@ public class TennisGame2 implements TennisGame
                 score = "Love";
             if (isFifteen(pointPlayer1))
                 score = "Fifteen";
-            if (pointPlayer1==2)
+            if (isThirty(pointPlayer1))
                 score = "Thirty";
             score += "-All";
         }
@@ -33,7 +33,7 @@ public class TennisGame2 implements TennisGame
         {
             if (isFifteen(pointPlayer1))
                 answerPlayer1 = "Fifteen";
-            if (pointPlayer1==2)
+            if (isThirty(pointPlayer1))
                 answerPlayer1 = "Thirty";
             if (pointPlayer1==3)
                 answerPlayer1 = "Forty";
@@ -45,7 +45,7 @@ public class TennisGame2 implements TennisGame
         {
             if (isFifteen(pointPlayer2))
                 answerPlayer2 = "Fifteen";
-            if (pointPlayer2==2)
+            if (isThirty(pointPlayer2))
                 answerPlayer2 = "Thirty";
             if (pointPlayer2==3)
                 answerPlayer2 = "Forty";
@@ -56,25 +56,25 @@ public class TennisGame2 implements TennisGame
         
         if (pointPlayer1>pointPlayer2 && pointPlayer1 < 4)
         {
-            if (pointPlayer1==2)
+            if (isThirty(pointPlayer1))
                 answerPlayer1="Thirty";
             if (pointPlayer1==3)
                 answerPlayer1="Forty";
             if (isFifteen(pointPlayer2))
                 answerPlayer2="Fifteen";
-            if (pointPlayer2==2)
+            if (isThirty(pointPlayer2))
                 answerPlayer2="Thirty";
             score = answerPlayer1 + "-" + answerPlayer2;
         }
         if (pointPlayer2>pointPlayer1 && pointPlayer2 < 4)
         {
-            if (pointPlayer2==2)
+            if (isThirty(pointPlayer2))
                 answerPlayer2="Thirty";
             if (pointPlayer2==3)
                 answerPlayer2="Forty";
             if (isFifteen(pointPlayer1))
                 answerPlayer1="Fifteen";
-            if (pointPlayer1==2)
+            if (isThirty(pointPlayer1))
                 answerPlayer1="Thirty";
             score = answerPlayer1 + "-" + answerPlayer2;
         }
@@ -108,6 +108,12 @@ public class TennisGame2 implements TennisGame
     
     public boolean isFifteen(int pointPlayer){
         if (pointPlayer == 1)
+            return true;
+        return false;
+    }
+    
+    public boolean isThirty(int pointPlayer){
+        if (pointPlayer == 2)
             return true;
         return false;
     }
