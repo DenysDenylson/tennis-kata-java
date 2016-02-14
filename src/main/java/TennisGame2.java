@@ -14,19 +14,13 @@ public class TennisGame2 implements TennisGame
         this.namePlayer2 = player2Name;
     }
 
-    public boolean isLove(int pointPlayer){
-        if (pointPlayer == 0)
-            return true;
-        return false;
-    }
-    
     public String getScore(){
         String score = "";
         if (pointPlayer1 == pointPlayer2 && pointPlayer1 < 4)
         {
             if (isLove(pointPlayer1))
                 score = "Love";
-            if (pointPlayer1==1)
+            if (isFifteen(pointPlayer1))
                 score = "Fifteen";
             if (pointPlayer1==2)
                 score = "Thirty";
@@ -37,7 +31,7 @@ public class TennisGame2 implements TennisGame
         
         if (pointPlayer1 > 0 && isLove(pointPlayer2))
         {
-            if (pointPlayer1==1)
+            if (isFifteen(pointPlayer1))
                 answerPlayer1 = "Fifteen";
             if (pointPlayer1==2)
                 answerPlayer1 = "Thirty";
@@ -49,7 +43,7 @@ public class TennisGame2 implements TennisGame
         }
         if (pointPlayer2 > 0 && isLove(pointPlayer1))
         {
-            if (pointPlayer2==1)
+            if (isFifteen(pointPlayer2))
                 answerPlayer2 = "Fifteen";
             if (pointPlayer2==2)
                 answerPlayer2 = "Thirty";
@@ -66,7 +60,7 @@ public class TennisGame2 implements TennisGame
                 answerPlayer1="Thirty";
             if (pointPlayer1==3)
                 answerPlayer1="Forty";
-            if (pointPlayer2==1)
+            if (isFifteen(pointPlayer2))
                 answerPlayer2="Fifteen";
             if (pointPlayer2==2)
                 answerPlayer2="Thirty";
@@ -78,7 +72,7 @@ public class TennisGame2 implements TennisGame
                 answerPlayer2="Thirty";
             if (pointPlayer2==3)
                 answerPlayer2="Forty";
-            if (pointPlayer1==1)
+            if (isFifteen(pointPlayer1))
                 answerPlayer1="Fifteen";
             if (pointPlayer1==2)
                 answerPlayer1="Thirty";
@@ -104,6 +98,18 @@ public class TennisGame2 implements TennisGame
             score = "Win for player2";
         }
         return score;
+    }
+    
+    public boolean isLove(int pointPlayer){
+        if (pointPlayer == 0)
+            return true;
+        return false;
+    }
+    
+    public boolean isFifteen(int pointPlayer){
+        if (pointPlayer == 1)
+            return true;
+        return false;
     }
     
     public void SetP1Score(int number){
