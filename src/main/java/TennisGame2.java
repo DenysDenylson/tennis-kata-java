@@ -26,7 +26,7 @@ public class TennisGame2 implements TennisGame
                 score = "Thirty";
             score += "-All";
         }
-        if (pointPlayer1==pointPlayer2 && pointPlayer1>=3)
+        if (isDeuce())
             score = "Deuce";
         
         if (pointPlayer1 > 0 && isLove(pointPlayer2))
@@ -120,6 +120,12 @@ public class TennisGame2 implements TennisGame
     
     public boolean isForty(int pointPlayer){
         if (pointPlayer == 3)
+            return true;
+        return false;
+    }
+    
+    public boolean isDeuce(){
+        if (pointPlayer1==pointPlayer2 && pointPlayer1>=3)
             return true;
         return false;
     }
