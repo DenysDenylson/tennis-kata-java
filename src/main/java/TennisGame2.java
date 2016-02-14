@@ -83,14 +83,12 @@ public class TennisGame2 implements TennisGame
         if (isAdvantagePlayer2())
             score = "Advantage player2";
         
-        if (pointPlayer1>=4 && pointPlayer2>=0 && (pointPlayer1-pointPlayer2)>=2)
-        {
+        if (winPlayer1())
             score = "Win for player1";
-        }
-        if (pointPlayer2>=4 && pointPlayer1>=0 && (pointPlayer2-pointPlayer1)>=2)
-        {
+        
+        if (winPlayer2())
             score = "Win for player2";
-        }
+        
         return score;
     }
     
@@ -132,6 +130,18 @@ public class TennisGame2 implements TennisGame
     
     public boolean  isAdvantagePlayer2(){
         if (pointPlayer2 > pointPlayer1 && pointPlayer1 >= 3)
+            return true;        
+        return false;        
+    }
+    
+    public boolean  winPlayer1(){
+        if (pointPlayer1>=4 && pointPlayer2>=0 && (pointPlayer1-pointPlayer2)>=2)
+            return true;        
+        return false;        
+    }
+    
+    public boolean  winPlayer2(){
+        if (pointPlayer2>=4 && pointPlayer1>=0 && (pointPlayer2-pointPlayer1)>=2)
             return true;        
         return false;        
     }
