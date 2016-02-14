@@ -29,6 +29,19 @@ public class TennisGame2 implements TennisGame
         }
         return score;
     }
+    
+    public String ConvertPointToLiteral(int point){
+        String literal = "";
+            if (point==0)
+                literal="Love";
+            if (point==1)
+                literal = "Fifteen";
+            if (point==2)
+                literal = "Thirty";
+            if (point==3)
+                literal = "Forty";
+        return literal;
+    }
 
     public String getScore(){
         String score = "";
@@ -36,52 +49,10 @@ public class TennisGame2 implements TennisGame
         score = tiedGame();
         
         
-        if (pointPlayer1 > 0 && isLove(pointPlayer2)){
-            if (isFifteen(pointPlayer1))
-                answerPlayer1 = "Fifteen";
-            if (isThirty(pointPlayer1))
-                answerPlayer1 = "Thirty";
-            if (isForty(pointPlayer1))
-                answerPlayer1 = "Forty";
-            
-            answerPlayer2 = "Love";
-            score = answerPlayer1 + "-" + answerPlayer2;
-        }
-        
-        if (pointPlayer2 > 0 && isLove(pointPlayer1)){
-            if (isFifteen(pointPlayer2))
-                answerPlayer2 = "Fifteen";
-            if (isThirty(pointPlayer2))
-                answerPlayer2 = "Thirty";
-            if (isForty(pointPlayer2))
-                answerPlayer2 = "Forty";
-            
-            answerPlayer1 = "Love";
-            score = answerPlayer1 + "-" + answerPlayer2;
-        }
-        
-        if (pointPlayer1>pointPlayer2 && pointPlayer1 < 4){
-            if (isThirty(pointPlayer1))
-                answerPlayer1="Thirty";
-            if (isForty(pointPlayer1))
-                answerPlayer1="Forty";
-            if (isFifteen(pointPlayer2))
-                answerPlayer2="Fifteen";
-            if (isThirty(pointPlayer2))
-                answerPlayer2="Thirty";
-            score = answerPlayer1 + "-" + answerPlayer2;
-        }
-        
-        if (pointPlayer2>pointPlayer1 && pointPlayer2 < 4){
-            if (isThirty(pointPlayer2))
-                answerPlayer2="Thirty";
-            if (isForty(pointPlayer2))
-                answerPlayer2="Forty";
-            if (isFifteen(pointPlayer1))
-                answerPlayer1="Fifteen";
-            if (isThirty(pointPlayer1))
-                answerPlayer1="Thirty";
-            score = answerPlayer1 + "-" + answerPlayer2;
+        if((pointPlayer1!=pointPlayer2 && pointPlayer1 < 4 && pointPlayer2 < 4)){
+            answerPlayer1 = ConvertPointToLiteral(pointPlayer1);   
+            answerPlayer2 = ConvertPointToLiteral(pointPlayer2); 
+            score = answerPlayer1+ "-" + answerPlayer2;
         }
         
         if (isAdvantagePlayer1())
