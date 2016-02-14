@@ -16,8 +16,7 @@ public class TennisGame2 implements TennisGame
 
     public String getScore(){
         String score = "";
-        if (pointPlayer1 == pointPlayer2 && pointPlayer1 < 4)
-        {
+        if (pointPlayer1 == pointPlayer2 && pointPlayer1 < 4){
             if (isLove(pointPlayer1))
                 score = "Love";
             if (isFifteen(pointPlayer1))
@@ -26,11 +25,11 @@ public class TennisGame2 implements TennisGame
                 score = "Thirty";
             score += "-All";
         }
+        
         if (isDeuce())
             score = "Deuce";
         
-        if (pointPlayer1 > 0 && isLove(pointPlayer2))
-        {
+        if (pointPlayer1 > 0 && isLove(pointPlayer2)){
             if (isFifteen(pointPlayer1))
                 answerPlayer1 = "Fifteen";
             if (isThirty(pointPlayer1))
@@ -41,8 +40,8 @@ public class TennisGame2 implements TennisGame
             answerPlayer2 = "Love";
             score = answerPlayer1 + "-" + answerPlayer2;
         }
-        if (pointPlayer2 > 0 && isLove(pointPlayer1))
-        {
+        
+        if (pointPlayer2 > 0 && isLove(pointPlayer1)){
             if (isFifteen(pointPlayer2))
                 answerPlayer2 = "Fifteen";
             if (isThirty(pointPlayer2))
@@ -54,8 +53,7 @@ public class TennisGame2 implements TennisGame
             score = answerPlayer1 + "-" + answerPlayer2;
         }
         
-        if (pointPlayer1>pointPlayer2 && pointPlayer1 < 4)
-        {
+        if (pointPlayer1>pointPlayer2 && pointPlayer1 < 4){
             if (isThirty(pointPlayer1))
                 answerPlayer1="Thirty";
             if (isForty(pointPlayer1))
@@ -66,8 +64,8 @@ public class TennisGame2 implements TennisGame
                 answerPlayer2="Thirty";
             score = answerPlayer1 + "-" + answerPlayer2;
         }
-        if (pointPlayer2>pointPlayer1 && pointPlayer2 < 4)
-        {
+        
+        if (pointPlayer2>pointPlayer1 && pointPlayer2 < 4){
             if (isThirty(pointPlayer2))
                 answerPlayer2="Thirty";
             if (isForty(pointPlayer2))
@@ -79,15 +77,11 @@ public class TennisGame2 implements TennisGame
             score = answerPlayer1 + "-" + answerPlayer2;
         }
         
-        if (pointPlayer1 > pointPlayer2 && pointPlayer2 >= 3)
-        {
+        if (isAdvantagePlayer1())
             score = "Advantage player1";
-        }
         
-        if (pointPlayer2 > pointPlayer1 && pointPlayer1 >= 3)
-        {
+        if (isAdvantagePlayer2())
             score = "Advantage player2";
-        }
         
         if (pointPlayer1>=4 && pointPlayer2>=0 && (pointPlayer1-pointPlayer2)>=2)
         {
@@ -128,6 +122,18 @@ public class TennisGame2 implements TennisGame
         if (pointPlayer1==pointPlayer2 && pointPlayer1>=3)
             return true;
         return false;
+    }
+    
+    public boolean  isAdvantagePlayer1(){
+        if (pointPlayer1 > pointPlayer2 && pointPlayer2 >= 3)
+            return true;        
+        return false;        
+    }
+    
+    public boolean  isAdvantagePlayer2(){
+        if (pointPlayer2 > pointPlayer1 && pointPlayer1 >= 3)
+            return true;        
+        return false;        
     }
     
     public void SetP1Score(int number){
