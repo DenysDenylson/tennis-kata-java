@@ -48,7 +48,6 @@ public class TennisGame2 implements TennisGame
         
         score = tiedGame();
         
-        
         if((pointPlayer1!=pointPlayer2 && pointPlayer1 < 4 && pointPlayer2 < 4)){
             answerPlayer1 = ConvertPointToLiteral(pointPlayer1);   
             answerPlayer2 = ConvertPointToLiteral(pointPlayer2); 
@@ -61,10 +60,10 @@ public class TennisGame2 implements TennisGame
         if (isAdvantagePlayer2())
             score = "Advantage player2";
         
-        if (winPlayer1())
+        if (winPlayer(pointPlayer1, pointPlayer2))
             score = "Win for player1";
         
-        if (winPlayer2())
+        if (winPlayer(pointPlayer2, pointPlayer1))
             score = "Win for player2";
         
         return score;
@@ -112,16 +111,10 @@ public class TennisGame2 implements TennisGame
         return false;        
     }
     
-    public boolean  winPlayer1(){
-        if (pointPlayer1>=4 && pointPlayer2>=0 && (pointPlayer1-pointPlayer2)>=2)
-            return true;        
-        return false;        
-    }
-    
-    public boolean  winPlayer2(){
-        if (pointPlayer2>=4 && pointPlayer1>=0 && (pointPlayer2-pointPlayer1)>=2)
-            return true;        
-        return false;        
+    public boolean winPlayer(int pointPlayerA, int pointPlayerB){
+        if (pointPlayerA>=4 && pointPlayerB>=0 && (pointPlayerA-pointPlayerB)>=2)
+            return true;
+        return false;
     }
     
     public void SetP1Score(int number){
